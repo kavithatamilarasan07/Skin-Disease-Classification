@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediction Result</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      width: 450px;
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .result-card {
+      background: #eef7ff;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+    }
+
+    .disease {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2980b9;
+    }
+
+    .confidence {
+      font-size: 18px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #3498db;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+    }
+
+    a:hover {
+      background: #217dbb;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>🩺 Prediction Result</h1>
+
+  <div class="result-card">
+
+    <div class="disease">
+      {{ disease }}
+    </div>
+
+    <div class="confidence">
+      Confidence:
+      {{ "%.2f"|format(confidence * 100) }}%
+    </div>
+
+  </div>
+
+
+  {% if image_path %}
+    <h3>Uploaded Image</h3>
+    <img src="{{ image_path }}" alt="Uploaded skin image">
+  {% endif %}
+
+
+  <a href="/">
+    Upload Another Image
+  </a>
+
+</div>
+
+</body>
+</html>
